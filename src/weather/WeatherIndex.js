@@ -29,7 +29,6 @@ export default function WeatherIndex() {
   const getDetail = useCallback((city) => {
     axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${city}&cnt=6&appid=${appId}`)
     .then((res) => {
-      console.log(res)
       if(res.status == '200') {
         const weekDay = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
         const detail = {
@@ -49,8 +48,8 @@ export default function WeatherIndex() {
           const tem = res.data.list[i].temp.day;
           detail.days.push({date:date,day:day,weather:wea,tempreture:tem});
         }
-        console.log('detail',detail)
         dispatch({type: 'DETAIL_GET', payload: detail});
+        setRefresh(true);
       }
     });
   });
@@ -118,7 +117,7 @@ function locationList (data) {
             </div>
           </Col>
           <Col sm={8} className="right-panel">
-            <Location_detail weatherDetail={weatherDetail}/>
+            <Location_detail weatherDetail={weatherDetail} refresh={refresh}/>
           </Col>
         </Row>
       </Container>

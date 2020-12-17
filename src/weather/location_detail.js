@@ -10,10 +10,25 @@ function Location_detail(props) {
 
   useEffect(() => {
     if(props) {
-      console.log('ppp',props);
+      console.log('yeee',props);
       setPending(false);
     }
-  },[])
+  },[props.refresh]);
+
+  function futureList (data) {
+    return (
+      data.map((d,index) => {
+        return (
+          <Col className="future-block" key={index}>
+            <p>{d.date}</p>
+            <p>{d.day}</p>
+            <Image src="holder.js/171x180" rounded />
+            <p>{d.tempreture}</p>
+          </Col>
+        );
+      })
+    );
+  }
 
   return (
     <div className="location-detail">
@@ -33,36 +48,11 @@ function Location_detail(props) {
           </Col>
         </Row>
         <Row className="future-panel">
-          <Col className="future-block">
-            <p>10</p>
-            <p>Mon</p>
-            <Image src="holder.js/171x180" rounded />
-            <p>15C</p>
-          </Col>
-          <Col className="future-block">
-            <p>10</p>
-            <p>Mon</p>
-            <Image src="holder.js/171x180" rounded />
-            <p>15C</p>
-          </Col>
-          <Col className="future-block">
-            <p>10</p>
-            <p>Mon</p>
-            <Image src="holder.js/171x180" rounded />
-            <p>15C</p>
-          </Col>
-          <Col className="future-block">
-            <p>10</p>
-            <p>Mon</p>
-            <Image src="holder.js/171x180" rounded />
-            <p>15C</p>
-          </Col>
-          <Col className="future-block">
-            <p>10</p>
-            <p>Mon</p>
-            <Image src="holder.js/171x180" rounded />
-            <p>15C</p>
-          </Col>
+          {props.weatherDetail.days != null ?
+            futureList(props.weatherDetail.days)
+            :
+            null
+          }
         </Row>
       </div>
       
