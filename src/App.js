@@ -1,7 +1,6 @@
-import logo from './logo.svg';
-import './App.css';
+import './common/assets/css/App.css';
 import {AppProvider} from './context/AppContext.js';
-import WeatherIndex from './weather/WeatherIndex.js';
+import WeatherIndex from './common/components/Weather/WeatherIndex.js';
 
 function App() {
 

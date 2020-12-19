@@ -1,5 +1,3 @@
-let _weatherList = [];
-
 function prepend(arr,item) {
   if(arr != '') {
     if(arr.length == 8) {arr.pop();}
@@ -24,36 +22,37 @@ function updateElement(arr,id,item) {
   return arr;
 }
 
-const listReducer = (state, {type, payload}) => {
+export default function ListReducer(state, {type, payload}) {
   switch (type) {
     case 'LIST_INSERT':{
-        const weatherUnit = {
-          id:payload.id,
-          city:payload.city,
-          tempreture:payload.tempreture,
-          weather:payload.weather
-        }
-        state = prepend(state,weatherUnit);
-        break;
+      const detail = {
+        id:payload.city.id,
+        city:payload.city.name,
+        tempreture:payload.list[0].temp.day,
+        weather:payload.list[0].weather[0].main,
       }
+      state = prepend(state,detail);
+      break;
+    }
     case 'LIST_DELETE':{
-        state = deleteElement(state, payload.id);
-        break;
-      }
+      state = deleteElement(state, payload.id);
+      break;
+    }
     case 'LIST_UPDATE':{
-        const weatherUnit = {
-          id:payload.id,
-          city:payload.city,
-          tempreture:payload.tempreture,
-          weather:payload.weather
-        }
-        state = updateElement(state,payload.id,weatherUnit);
-        break;
+      const detail = {
+        id:payload.city.id,
+        city:payload.city.name,
+        tempreture:payload.list[0].temp.day,
+        weather:payload.list[0].weather[0].main,
       }
+      state = updateElement(state,payload.city.id,detail);
+      break;
+    }
+    case 'LIST_CLEAR':{
+      state = [];
+      break;
+    }
+    default: break;
   }
   return state;
-}
-
-export {
-  _weatherList, listReducer,
 }
