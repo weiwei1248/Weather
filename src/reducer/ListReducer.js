@@ -5,12 +5,8 @@ function prepend(arr,item) {
   return [item].concat(arr);
 }
 
-function deleteElement(arr,item) {
-  for(let i = 0; i < arr.length; i++) {
-    if(arr[i].id == item) {
-      arr.splice(i,1);
-    }
-  }
+function deleteElement(arr,index) {
+  arr.splice(index,1);
   return arr;
 }
 
@@ -35,7 +31,7 @@ export default function ListReducer(state, {type, payload}) {
       break;
     }
     case 'LIST_DELETE':{
-      state = deleteElement(state, payload.id);
+      state = deleteElement(state, payload.index);
       break;
     }
     case 'LIST_UPDATE':{

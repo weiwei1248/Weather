@@ -47,7 +47,7 @@ export function WeatherInsert(props) {
 export function WeatherDelete(props) {
     const [state, dispatch] = useContext(AppContext);
     function deleteElement() {
-        dispatch({type: 'LIST_DELETE', payload: {id: props.id}});
+        dispatch({type: 'LIST_DELETE', payload: {index:props.index}});
         props.callRefresh();
     }
 
@@ -63,7 +63,7 @@ export function WeatherRefreshDetail(props) {
     function refreshDetail() {
         axios.get(`http://api.openweathermap.org/data/2.5/forecast/daily?q=${props.city}&cnt=6&units=metric&appid=${props.appId}`)
         .then((res) => {
-          dispatch({type: 'DETAIL_GET', payload: res.data});
+          dispatch({type: 'DETAIL_GET', payload: {res:res.data,iconList:iconList}});
           props.callRefresh();
         })
         .catch((error) => {

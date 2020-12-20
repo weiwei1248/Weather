@@ -21,6 +21,7 @@ export default function WeatherIndex() {
         return (
           <WeatherList
           key={index}
+          index={index}
           id={d.id}
           city={d.city}
           tempreture={d.tempreture}

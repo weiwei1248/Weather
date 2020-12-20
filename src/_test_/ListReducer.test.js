@@ -35,7 +35,7 @@ describe('ListReducer', function() {
     act(() => {
       dispatch({type: 'LIST_INSERT', payload:{city:{id:123,name:'London'},list:[{temp:{day:12},weather:[{main:'Clear'}]}]} });
       dispatch({type: 'LIST_INSERT', payload:{city:{id:456,name:'Windsor'},list:[{temp:{day:35},weather:[{main:'Rain'}]}]} });
-      dispatch({type: 'LIST_DELETE', payload:{id:456}});
+      dispatch({type: 'LIST_DELETE', payload:{index:0}});
     });
     const [state] = result.current;
     expect(state).toStrictEqual(

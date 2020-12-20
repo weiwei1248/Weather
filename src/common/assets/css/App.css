@@ -9,10 +9,22 @@
 .second-title{color:gray;font-size: 14px;border-bottom: 1px solid darkgray;padding:0 5px;}
 .location-unit{border-bottom: 1px solid lightgray;padding:0 5px;}
 .plus:hover, .refresh:hover, .delete:hover, .cityName:hover{cursor: pointer;color:#007bff;transition: .3s all;}
-.location-unit .refresh, .location-unit .delete{margin-top: 15px;}
+.location-unit .refresh, .location-unit .delete{margin-top: 10px;}
+.location-unit .small-btn,
+.location-detail .small-btn
+{width:auto;}
+
 /**detail page**/
 .future-block{text-align:center;}
 .future-block p{line-height: .5;}
-.future-block img{margin-bottom: 10px;margin-top: -10px;}
+.future-block img{margin-bottom: 10px;margin-top: -10px;width:100%;}
 .future-panel{margin-top: 40px;}
 .location-detail .weather-icon{text-align: center;}
+.weather-icon img{width:60%}
+
+/**mobile**/
+@media(min-width:320px) and (max-width:767px) {
+    .future-block p{font-size:12px;}
+    .weather-icon img{width:100%}
+    .left-panel{border-bottom: 10px solid #e7e7e7;border-right: none;}
+}

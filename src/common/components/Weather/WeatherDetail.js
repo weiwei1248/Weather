@@ -11,7 +11,7 @@ function WeatherDetail(props) {
           <Col className="future-block" key={index}>
             <p>{d.date}</p>
             <p>{d.day}</p>
-            <img style={{width:'50%'}} src={d.icon} alt='weather'/>
+            <img src={d.icon} alt='weather'/>
             <p>{d.tempreture} &#8451;</p>
           </Col>
         );
@@ -24,10 +24,10 @@ function WeatherDetail(props) {
       <div>
         <Row>
           <Col><h3>{props.weatherDetail.city}</h3></Col>
-          <Col md="auto"><WeatherRefreshDetail callRefresh={props.callRefresh} city={props.weatherDetail.city}/></Col>
+          <Col md="auto" className="small-btn"><WeatherRefreshDetail callRefresh={props.callRefresh} city={props.weatherDetail.city} appId={props.appId}/></Col>
         </Row>
         <Row>
-          <Col className='weather-icon'><img style={{width:'50%'}} src={props.weatherDetail.icon} alt='weather'/></Col>
+          <Col className='weather-icon'><img src={props.weatherDetail.icon} alt='weather'/></Col>
           <Col>
             <p>{props.weatherDetail.tempreture} &#8451;</p>
             <p>{props.weatherDetail.weather}</p>
