@@ -1,9 +1,9 @@
 import React, { useCallback, useState, useEffect, useContext } from "react";
-import { Container,Row,Col} from 'react-bootstrap';
-import {AppContext} from '../../../context/AppContext.js';
+import { Container, Row, Col } from 'react-bootstrap';
+import { AppContext } from '../../../context/AppContext.js';
 import WeatherList from './WeatherList.js';
 import WeatherDetail from './WeatherDetail.js';
-import {WeatherInsert,WeatherClear} from './WeatherAction.js';
+import { WeatherInsert, WeatherClear } from './WeatherAction.js';
 
 export default function WeatherIndex() {
   const appId = 'c51223c219d6aec8cb8c5210449bd859';
@@ -34,7 +34,6 @@ export default function WeatherIndex() {
       })
     );
   }
-
 
   useEffect(() => {
     function fetchData() {

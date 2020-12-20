@@ -3,6 +3,7 @@ import ListReducer from '../reducer/ListReducer.js';
 import DetailReducer from '../reducer/DetailReducer.js';
 import useCombinedReducer from '../reducer/useCombinedReducer.js';
 
+//define public context and commbine all reducers
 export const AppContext = createContext();
 
 export function AppProvider(props) {
